@@ -18,8 +18,7 @@ public class MapSelection extends GameState {
     public MapSelection(GamePanel gamepanel) {
         super(gamepanel);
         this.choice = 1;
-         this.unlockmap = this.getGamepanel().getGameDataStore().getMapunlock();
-        //this.unlockmap = 9;
+        this.unlockmap = this.getGamepanel().getGameDataStore().getMapunlock();
         this.counter = 0;
         
         for(int i = 0; i < unlockmap; i++){
@@ -43,7 +42,7 @@ public class MapSelection extends GameState {
                     choice+=3;
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     if(choice+3<=unlockmap)
                         choice+=3;
@@ -56,7 +55,7 @@ public class MapSelection extends GameState {
                 choice-=3;
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     choice-=3;
                 }
@@ -69,7 +68,7 @@ public class MapSelection extends GameState {
                 choice++;
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     if(choice+1<=unlockmap)
                     choice+=1;
@@ -82,13 +81,13 @@ public class MapSelection extends GameState {
                 choice--;
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     choice-=1;
                 }
             }
         }
-        else if(keyHandler.getkeypresses()[10]){
+        else if(keyHandler.getkeypresses()[KeyEvent.VK_ENTER]){
             this.getGamepanel().getMapManager().setCurrentMap(choice);
             this.getGamepanel().getGamestatemanager().popState();
             this.getGamepanel().getGamestatemanager().addState( new PlayState(this.getGamepanel(),this.getGamepanel().getMapManager().getVectormap().elementAt(choice-1)));
@@ -100,7 +99,7 @@ public class MapSelection extends GameState {
                 this.getGamepanel().getGamestatemanager().addState(new GameMenu(this.getGamepanel()));
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                         this.getGamepanel().getGamestatemanager().popState();
                         this.getGamepanel().getGamestatemanager().addState(new GameMenu(this.getGamepanel()));
@@ -143,7 +142,6 @@ public class MapSelection extends GameState {
 
     @Override
     public void update() {
-        
         
         
     }

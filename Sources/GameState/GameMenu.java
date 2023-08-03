@@ -1,6 +1,8 @@
 package Sources.GameState;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+
 import javax.imageio.ImageIO;
 import java.awt.image.*;
 import Sources.GamePanel;
@@ -30,7 +32,7 @@ public class GameMenu extends GameState {
                 choice++;
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     choice++;
                 }
@@ -45,7 +47,7 @@ public class GameMenu extends GameState {
                 choice--;
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     choice--;
                 }
@@ -57,8 +59,8 @@ public class GameMenu extends GameState {
                 choice = 1;
             }
         }
-        else if(keyHandler.getkeypresses()[10]){
-            keyHandler.getkeypresses()[10] = false;
+        else if(keyHandler.getkeypresses()[KeyEvent.VK_ENTER]){
+            keyHandler.getkeypresses()[KeyEvent.VK_ENTER] = false;
             if(counter<2){
                 if(this.choice==1){
                     this.getGamepanel().getGamestatemanager().popState();
@@ -76,7 +78,7 @@ public class GameMenu extends GameState {
                 }
             }
             else{
-                if(counter>30){
+                if(counter>10){
                     if(counter%10==0)
                     if(this.choice==1){
                         this.getGamepanel().getGamestatemanager().popState();

@@ -106,7 +106,7 @@ public class Player extends Entity {
         return false;
     }
     public void updatePosition(){
-        this.getshape().setBounds(this.getPosition().elementAt(0)+12, this.getPosition().elementAt(1)+12, 40, 40);
+        this.getshape().setBounds(this.getPosition().elementAt(0)+12, this.getPosition().elementAt(1)+12, 44, 44);
     }
 
     public int getSpeed() {
