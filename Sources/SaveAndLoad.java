@@ -28,7 +28,7 @@ public class SaveAndLoad {
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("save.dat")));
                 GameDataStore dataStore = (GameDataStore) ois.readObject();
                 this.gamepanel.getGameDataStore().mapunlock = dataStore.mapunlock;
-                
+            
             }catch(Exception e){
                 e.printStackTrace();
             }
