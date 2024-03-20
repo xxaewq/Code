@@ -1,19 +1,19 @@
 package Sources.Map;
 import java.awt.image.*;
-
 import javax.imageio.ImageIO;
-
 import Sources.Tool.LoadMap;
 
+
+//Định nghĩa 1 map
 public class Map {
     private LoadMap loadMap;
     private String source;
     private BufferedImage minimap;
     private int x;
     private int y;
-    private int nomap;
+    private int nomap;  
     private boolean done;
-    public String getSource() {
+    public String getSource() { 
         return source;
     }
     public void setSource(String source) {

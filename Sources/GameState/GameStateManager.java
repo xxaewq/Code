@@ -5,12 +5,14 @@ import Sources.GamePanel;
 import Sources.Tool.KeyHandler;
 import java.awt.*;
 
-
+// Quản lý trạng thái của game
 public class GameStateManager {
     public Vector<GameState> states;
     public  GamePanel gamepanel;
     public static Font font_rainyHeart;
     public static Font font_bong;
+
+    // Khởi tạo
     public GameStateManager(GamePanel gamepanel) {
         this.gamepanel = gamepanel;
         this.states = new Vector<>();
@@ -22,6 +24,8 @@ public class GameStateManager {
             e.printStackTrace();
         }
     }
+
+    // Cập nhật trạng thái cuối cùng trong vector
     public void update(){
         states.lastElement().update();
     }

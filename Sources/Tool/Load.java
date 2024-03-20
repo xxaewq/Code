@@ -11,6 +11,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Vector;
+
+
+// Định nghĩa lớp Load : load hình ảnh, âm thanh và map từ file
 public class Load {
     protected String path;
     protected Vector<Entity> entities;
@@ -45,29 +48,29 @@ public class Load {
         int col = 0;
         int row = 0;
         try {
-            InputStream is = getClass().getResourceAsStream(this.path);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line = "";
-            do{
-                do{
-                    line = br.readLine();
-                    if(line.equals("nextlayer")||line.equals("end")){
+            InputStream is = getClass().getResourceAsStream(this.path); //Lấy file từ đường dẫn
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));  //Đọc file
+            String line = "";   
+            do{ //Vòng lặp đọc từng dòng cho đến khi gặp end
+                do{ //Vòng lặp đọc từng dòng cho đến khi dòng rỗng
+                    line = br.readLine();   //Đọc dòng
+                    if(line.equals("nextlayer")||line.equals("end")){   //Nếu gặp nextlayer hoặc end reset cột và dòng
                         col = 0;
                         row = 0;
                         break;
                     }
-                    String [] obj = line.split(",");
+                    String [] obj = line.split(",");    //Tách chuỗi theo dấu phẩy
                         for(String a: obj){
                             Vector<Integer> v = new Vector<>();
-                            v.add(col*64);
+                            v.add(col*64);  
                             v.add(row*64);
-                            int kind = Integer.parseInt(a);
-                            if(kind==0){
+                            int kind = Integer.parseInt(a);     //Chuyển chuỗi thành số
+                            if(kind==0){    //  Nếu kind = 0 thì tăng cột và tiếp tục
                                 col++;
                                 continue;
                             }
                             else{
-                                kind--;
+                                kind--; //  Trừ đi 1 vì kind bắt đầu từ 0
                             }
                             if(96<kind&&kind<101||83<kind&&kind<88){
                                 Wall thing = new Wall(v);
@@ -97,8 +100,8 @@ public class Load {
                         }
                         col = 0;
                         row++;
-                }while(!line.isEmpty());
-        }while(!line.equals("end"));
+                }while(!line.isEmpty());    
+        }while(!line.equals("end"));    
             br.close();
         } catch (Exception e) {
             e.printStackTrace();

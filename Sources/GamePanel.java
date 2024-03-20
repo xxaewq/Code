@@ -9,9 +9,10 @@ import Sources.GameState.GameStateManager;
 import Sources.Map.MapManager;
 import Sources.Tool.KeyHandler;
 
+
 public class GamePanel extends JPanel implements Runnable {
 
-    private final int originaltilesize = 8;
+    private final int originaltilesize = 64;
     private int scale;
     private int tilesize;
     private int screencol;
@@ -34,14 +35,14 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel(){
         this.scale = 1;
         this.tilesize = this.originaltilesize*this.scale;
-        this.screencol = 240/2;
-        this.screenrow = 135/2;
+        this.screencol = 30;
+        this.screenrow = 17;
         this.screenheight = this.screenrow*tilesize;
         this.screenwidth = this.screencol*tilesize;
         this.keyhandler = new KeyHandler();
         this.setPreferredSize(new Dimension(this.screenwidth,this.screenheight));
         this.setBackground(new Color(137,136,136));
-        this.setDoubleBuffered(true);
+        this.setDoubleBuffered(true);   
         this.setFocusable(true);
         this.addKeyListener(this.keyhandler);
         this.gamestatemanager = new GameStateManager(this);

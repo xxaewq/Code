@@ -8,7 +8,7 @@ import Sources.GameState.PlayState;
 import Sources.Tool.Load;
 import java.awt.Graphics2D;
 
-
+//Định nghĩa lớp MapRender : vẽ hình ảnh của map lên màn hình
 public class MapRender extends Render {
     protected Load loadimage;
     protected BufferedImage tile[][];
@@ -24,7 +24,7 @@ public class MapRender extends Render {
     public void setUp(){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 13; j++){
-                this.tile[i][j] = loadimage.LoadSubImage(j, i);
+                this.tile[i][j] = loadimage.LoadSubImage(j, i); //Lưu ý lấy tọa độ y trước, x sau
             }
         }
     }

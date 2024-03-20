@@ -1,8 +1,8 @@
 package Sources.Render;
 import java.awt.*;
-
 import Sources.GameState.PlayState;
 
+// Định nghĩa lớp Render
 public class Render {
     private PlayState playState;
 

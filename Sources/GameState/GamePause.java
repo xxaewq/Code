@@ -6,38 +6,40 @@ import Sources.GamePanel;
 import Sources.Map.Map;
 import Sources.Tool.KeyHandler;
 import java.awt.event.*;
+
+//Trạng thái tạm dừng game
 public class GamePause extends GameState {
     private int counter;
     private int choice;
     public GamePause(GamePanel gamepanel) {
         super(gamepanel);
+        choice = 1; // Mặc định lựa chọn là 1(Continue)
         counter = 0;
-        choice = 1;
     }
 
     @Override
     public void input(KeyHandler keyHandler) {
-        if(keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE]){
-            keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE] = false;
+        if(keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE]){ 
+            keyHandler.getkeypresses()[KeyEvent.VK_ESCAPE] = false; 
             counter++;
             if(counter<2){
-                this.getGamepanel().getGamestatemanager().popState();
+                this.getGamepanel().getGamestatemanager().popState();   // Nếu nhấn phím ESC thì thoát trạng thái tạm dừng
             }
             else{
-                if(counter>10){
-                    if(counter%10==0)
+                if(counter>19){
+                    if(counter%20==0)
                     this.getGamepanel().getGamestatemanager().popState();
                 }
             }
         }
-        else if(keyHandler.getkeypresses()[(int) 'S']){
+        else if(keyHandler.getkeypresses()[(int) 'S']){ // Nếu nhấn phím S thì di chuyển xuống
             counter++;
             if(counter<2){
                 choice++;
             }
             else{
-                if(counter>10){
-                    if(counter%10==0)
+                if(counter>19){
+                    if(counter%20==0)
                     choice++;
                 }
             }
@@ -45,14 +47,14 @@ public class GamePause extends GameState {
                 choice = 4;
             }
         }
-        else if(keyHandler.getkeypresses()[(int) 'W']){
+        else if(keyHandler.getkeypresses()[(int) 'W']){ // Nếu nhấn phím W thì di chuyển lên
             counter++;
             if(counter<2){
                 choice--;
             }
             else{
-                if(counter>10){
-                    if(counter%10==0)
+                if(counter>19){
+                    if(counter%20==0)
                     choice--;
                 }
             }
@@ -66,28 +68,28 @@ public class GamePause extends GameState {
         else if(keyHandler.getkeypresses()[KeyEvent.VK_ENTER]){
             keyHandler.getkeypresses()[KeyEvent.VK_ENTER] = false;
             if(counter<2){
-                if(this.choice==1){
-                    this.getGamepanel().getGamestatemanager().popState();
+                if(this.choice==1){ // Nếu chọn 1 (Continue) thì tiếp tục game
+                    this.getGamepanel().getGamestatemanager().popState();   // Xóa trạng thái trước đó
                 }
-                else if(this.choice==2){
+                else if(this.choice==2){    // Nếu chọn 2 (Restart) thì chơi lại map hiện tại
                     this.getGamepanel().getGamestatemanager().popState();
-                    Map inputpath = ((PlayState) this.getGamepanel().getGamestatemanager().states.lastElement()).getMap();
+                    Map inputpath = ((PlayState) this.getGamepanel().getGamestatemanager().states.lastElement()).getMap();  // Lấy map hiện tại
                     this.getGamepanel().getGamestatemanager().popState();
-                    this.getGamepanel().getGamestatemanager().addState( new PlayState(this.getGamepanel(),inputpath));
+                    this.getGamepanel().getGamestatemanager().addState( new PlayState(this.getGamepanel(),inputpath));  // Mở trạng thái new PlayState với map hiện tại
                 }
-                else if(this.choice==3){
-                    this.getGamepanel().getGamestatemanager().popState();
-                    this.getGamepanel().getGamestatemanager().popState();
+                else if(this.choice==3){    // Nếu chọn 3 (Map Selection) thì mở MapSelection
+                    this.getGamepanel().getGamestatemanager().popState();  
+                    this.getGamepanel().getGamestatemanager().popState();   
                     this.getGamepanel().getGamestatemanager().addState(new MapSelection(this.getGamepanel()));
                 }
-                if(this.choice==4){
+                if(this.choice==4){ // Nếu chọn 4 (Quit) thì quay trở về GameMenu
                     this.getGamepanel().getGamestatemanager().popState();
                     this.getGamepanel().getGamestatemanager().popState();
                     this.getGamepanel().getGamestatemanager().addState(new GameMenu(this.getGamepanel()));
                 }
             }
             else{
-                if(counter>10){
+                if(counter>9){
                     if(counter%10==0)
                     if(this.choice==1){
                         this.getGamepanel().getGamestatemanager().popState();
@@ -112,6 +114,8 @@ public class GamePause extends GameState {
         int txtLength = (int) g.getFontMetrics().getStringBounds(input, g).getWidth();
         return txtLength;
     }
+
+    //Vẽ trạng thái tạm dừng
     @Override
     public void render(Graphics2D g) {
         g.setColor(new Color(255,255,255,100));

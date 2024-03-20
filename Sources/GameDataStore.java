@@ -1,9 +1,10 @@
 package Sources;
 import java.io.Serializable;
 
-
+//Dinh nghia lop GameDataStore : luu tru du lieu game
 public class GameDataStore implements Serializable {
-    public int mapunlock = 0;
+    private static final long serialVersionUID = 1L;
+	public int mapunlock = 0;
     public int getMapunlock() {
         return mapunlock;
     }

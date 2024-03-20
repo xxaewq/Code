@@ -3,6 +3,7 @@ package Sources.Tool;
 import java.util.Vector;
 import Sources.Entity.Entity;
 
+// Định nghĩa lớp LoadMap : load map từ file
 public class LoadMap {
     protected Load load;
     protected Vector<Entity> maplayer;

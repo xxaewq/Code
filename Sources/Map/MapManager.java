@@ -4,15 +4,17 @@ import java.util.Vector;
 
 public class MapManager {
     private Vector<Map> vectormap;
+    private int maxMap;
     private int currentMap;
     public MapManager(){
+        this.maxMap = 20;
         this.currentMap = 1;
         this.vectormap = new Vector<>();
         setUp();
     }
 
     public void setUp(){
-        for(int i = 0; i <= 8; i++){
+        for(int i = 0; i < maxMap; i++){
             Map inputmap = new Map("/Map/map0"+(i+1)+".txt",i%3,i/3,i+1);
             inputmap.setNomap(i+1);
             this.vectormap.add(inputmap);

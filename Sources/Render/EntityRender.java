@@ -6,6 +6,7 @@ import Sources.GameState.PlayState;
 
 import java.awt.Graphics2D;
 
+// Định nghĩa lớp EntityRender : vẽ hình ảnh của các đối tượng khác lên màn hình
 public class EntityRender extends Render {
     BufferedImage image;
     public EntityRender(PlayState playstate, BufferedImage image) {

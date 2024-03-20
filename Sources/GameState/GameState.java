@@ -1,12 +1,9 @@
 package Sources.GameState;
-
 import Sources.GamePanel;
-
 import Sources.Tool.KeyHandler;
-
-
 import java.awt.*;
 
+// Định nghĩa trạng thái của game
 public abstract class GameState {
     private GamePanel gamepanel;
     public GameState(GamePanel gamepanel){

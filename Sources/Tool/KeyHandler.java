@@ -1,6 +1,8 @@
 package Sources.Tool;
 import java.awt.event.*;
 
+
+// Định nghĩa lớp KeyHandler : xử lý sự kiện phím
 public class KeyHandler implements KeyListener {
     private boolean [] key;
     public KeyHandler(){

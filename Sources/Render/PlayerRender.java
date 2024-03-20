@@ -6,10 +6,12 @@ import java.util.Vector;
 import Sources.GameState.PlayState;
 import Sources.Tool.Load;
 
+
+// Định nghĩa lớp PlayerRender : vẽ hình ảnh của nhân vật lên màn hình
 public class PlayerRender extends Render {
-    protected Vector<Vector<BufferedImage>> playeractionimages;
-    protected Load loadimage;
-    private int actionstate;
+    protected Vector<Vector<BufferedImage>> playeractionimages; // Mảng 2 chiều chứa hình ảnh của người chơi
+    protected Load loadimage;   
+    private int actionstate;    
     public PlayerRender(PlayState playstate) {
         super(playstate);
         this.actionstate = 0;
@@ -18,7 +20,7 @@ public class PlayerRender extends Render {
         this.SetUp();
     }
     
-    public void SetUp(){
+    public void SetUp(){    
         BufferedImage input;
         for(int i = 0; i < 4;i++){
             Vector<BufferedImage> action = new Vector<>();
@@ -43,11 +45,11 @@ public class PlayerRender extends Render {
         this.getPlayState().getGamepanel().getKeyHandler().getkeypresses()[(int) 'A']||
         this.getPlayState().getGamepanel().getKeyHandler().getkeypresses()[(int) 'D'])
         {
-            if(this.getPlayState().getGamepanel().getGamestatemanager().getStates().size()==1)
+            if(this.getPlayState().getGamepanel().getGamestatemanager().getStates().size()==1)  //nếu đây là trạng thái chơi game duy nhất
             this.actionstate++;
             if(this.actionstate>=30){
                 this.actionstate = 0;
-            }
+            }//tức là 1 giây sẽ render 6 hình ảnh <=> 2 lần hoạt ảnh di chuyển
         }
         g2.drawImage(playeractionimages.elementAt(this.getPlayState().getPlayer().getDirection()).elementAt(this.actionstate/10), this.getPlayState().getPlayer().getPosition().elementAt(0), this.getPlayState().getPlayer().getPosition().elementAt(1),null);
 }

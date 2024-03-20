@@ -3,11 +3,12 @@ package Sources.Entity;
 import java.awt.Rectangle;
 import java.util.Vector;
 
+//định nghĩa đối tượng tổng quát bất kì 
 public class Entity {
-    private int kind;
-    private Vector<Integer> position;
-    private Rectangle shape;
-    private boolean gothrough;
+    private int kind;   //Loại đối tượng
+    private Vector<Integer> position;   //vị trí
+    private Rectangle shape;    //hình dạng hiển thị
+    private boolean gothrough;  //có thể đi xuyên qua hay không
     public Entity(Vector<Integer> position){
         this.position = new Vector<>();
         this.position = position;
